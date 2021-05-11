@@ -1,38 +1,26 @@
-const orders = [
-  { email: 'solomon@topmail.ua', dish: 'Burger' },
-  { email: 'artemis@coldmail.net', dish: 'Pizza' },
-  { email: 'jacob@mail.com', dish: 'Taco' },
-];
-
-function composeMessage(position) {
-  // console.log(position);
-    console.log(`Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`);
-  return `Готовим ${this.dish} для ${this.email}. Ваш заказ ${position}-й в очереди.`;
+function StringBuilder(baseValue) {
+  this.value = baseValue;
 }
-const messages = [];
-for (let i = 0; i < orders.length; i += 1) {
-  // console.log(orders[i]);
-  messages.push(composeMessage.call(orders[i],i+1));
-  };
 
+StringBuilder.prototype.getValue = function () {
+  return this.value;
+}
+StringBuilder.prototype.padEnd = function (str) {
+  this.value += str;
+}
+StringBuilder.prototype.padStart = function (str) {
+   this.value = str + this.value;
+}
+StringBuilder.prototype.padBoth = function (str) {
+  this.value = str + this.value + str;
+}
 
-console.log(messages);
-
-// const orders = [
-//   { email: 'solomon@topmail.ua', dish: 'Burger' },
-//   { email: 'artemis@coldmail.net', dish: 'Pizza' },
-//   { email: 'jacob@mail.com', dish: 'Taco' },
-// ];
-// // Пиши код ниже этой строки
-// function composeMessage(position) {
-  
-// 	return `Готовим ${this.dish} для ${this.email}.Ваш заказ ${++position}-й в очереди.`;
-  
-// }
-// const messages = [];
-// for(let g = 0; g < Object.keys(orders).length; g++){
-  
-//   messages.push(composeMessage.call(orders[g], g));
-  
-//   }
-// console.log(messages);
+// Пиши код выше этой строки
+const builder = new StringBuilder('.');
+console.log(builder.getValue()); // '.'
+builder.padStart('^');
+console.log(builder.getValue()); // '^.'
+builder.padEnd('^');
+console.log(builder.getValue()); // '^.^'
+builder.padBoth('=');
+console.log(builder.getValue()); // '=^.^='

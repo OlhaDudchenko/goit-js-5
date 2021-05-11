@@ -1,21 +1,28 @@
-function countProps(object) {
-  let propCount = 0;
-  // Пиши код ниже этой строки
-//  эта задача приняла с length
-
-      // propCount = Object.keys(object).length;
-     for (const key in object) {
-    if (object.hasOwnProperty(key)) {
-      propCount += 1;
-    }
-  }
-  
-
-  // Пиши код выше этой строки
-  return propCount;
+class Storage{
+  #items;
+  constructor(items) {
+  this.#items = items;
 }
 
+getItems() {
+  return this.#items;
+}
 
-console.log(countProps({}));
-console.log(countProps({ name: 'Mango', age: 2 }));
-console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 }));
+addItem(newItem) {
+  this.#items.push(newItem);
+}
+
+removeItem(item) {
+  const itemIndex = this.#items.indexOf(item);
+  this.#items.splice(itemIndex, 1);
+}
+};
+
+
+// Пиши код выше этой строки
+const storage = new Storage(["Нанитоиды", "Пролонгер", "Антигравитатор"]);
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор"]
+storage.addItem("Дроид");
+console.log(storage.getItems()); // ["Нанитоиды", "Пролонгер", "Антигравитатор", "Дроид"]
+storage.removeItem("Пролонгер");
+console.log(storage.getItems()); // ["Нанитоиды", "Антигравитатор", "Дроид"]

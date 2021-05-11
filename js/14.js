@@ -1,11 +1,36 @@
-function countProps(object) {
-  // Пиши код ниже этой строки
-  let propCount = 0;
-  propCount = Object.keys(object).length
+class Car {
+  #model;
+  #price;
+  #brand;
 
-  return propCount;
-  // Пиши код выше этой строки
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.#model = model;
+    this.#price = price;
+  }
+
+  get brand() {
+    return this.#brand;
+  }
+
+  set brand(newBrand) {
+    this.#brand = newBrand;
+  }
+
+  get model() {
+    return this.model;
+  }
+
+  set model(newModel) {
+    this.#model = newModel;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    this.price = newPrice;
+  }
 }
-console.log(countProps({}));
-console.log(countProps({ name: 'Mango', age: 2 }) );
-console.log(countProps({ mail: 'poly@mail.com', isOnline: true, score: 500 }));
+

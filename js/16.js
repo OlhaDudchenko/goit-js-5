@@ -1,22 +1,21 @@
-function countTotalSalary(salaries) {
-  let totalSalary = 0;
+class Car {
+  static #MAX_PRICE = 50000;
   // Пиши код ниже этой строки
-  const values = Object.values(salaries);
-  // console.log(values);
-  for (const value of values) {
-    totalSalary += value;
-  }
+  static checkPrice(price) {
+   
+    if (price < Car.#MAX_PRICE) {
+      return 'Всё хорошо, цена в порядке.'
+    }
+    return 'Внимание! Цена превышает допустимую.';
+} 
   // Пиши код выше этой строки
-  return totalSalary;
+  constructor({ price }) {
+    this.price = price;
+  }
 }
 
-console.log(countTotalSalary({}));
-console.log( countTotalSalary({ mango: 100, poly: 150, alfred: 80 }));
-console.log(countTotalSalary({ kiwi: 200, poly: 50, ajax: 150 }));
+const audi = new Car({ price: 36000 });
+const bmw = new Car({ price: 64000 });
 
-// salaries = {
-//   mango: 100,
-//   poly: 150,
-//   alfred: 80
-  
-// }
+console.log(Car.checkPrice(audi.price)); // Всё хорошо, цена в порядке.
+console.log(Car.checkPrice(bmw.price)); // Внимание! Цена превышает допустимую.

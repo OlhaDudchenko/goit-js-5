@@ -1,10 +1,34 @@
-const apartment = {
-  descr: 'Просторная квартира в центре',
-  rating: 4,
-  price: 2153,
-};
-// Пиши код ниже этой строки
-const keys = Object.keys(apartment);
-console.log(keys);
-const values = Object.values(apartment);
-console.log(values);
+class Car {
+  // Пиши код ниже этой строки 
+  static MAX_PRICE = 50000;
+  
+  #price;
+ 
+  constructor({ price }) {
+    this.#price = price;
+  }
+
+  get price() {
+    return this.#price;
+  }
+
+  set price(newPrice) {
+    if (newPrice <= Car.MAX_PRICE) {
+      this.#price=newPrice;
+    }
+    // return newPrice;
+  }
+  // Пиши код выше этой строки
+}
+// console.log(this.MAX_PRICE);
+
+const audi = new Car({price: 35000});
+console.log(audi.price); // 35000
+ 
+
+audi.price = 49000;
+console.log(audi.price); // 49000
+
+audi.price = 51000;
+console.log(audi.price); // 49000
+// console.dir(Car);

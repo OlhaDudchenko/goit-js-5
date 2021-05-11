@@ -1,32 +1,39 @@
-const products = [
-  { name: 'Радар', price: 1300, quantity: 4 },
-  { name: 'Сканер', price: 2700, quantity: 3 },
-  { name: 'Дроид', price: 400, quantity: 7 },
-  { name: 'Захват', price: 1200, quantity: 9 },
-];
- console.table(products);
+class User {
+  email;
 
-function getProductPrice(productName) {
-  // Пиши код ниже этой строки
- 
-  for (const product of products) {
-    // console.log(product.price);
-    //  console. log(products.hasOwnProperty(productName));
-    
-     if (product.name ===productName) {
-    //    console.log(product.price);
-        return product.price;
-      
-      }
-      
+  constructor(email) {
+    this.email = email;
   }
-  return null;
-   
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+
+class Admin extends User {
+  // Пиши код ниже этой строки
+  accessLevel;
+  static AccessLevel = {
+    BASIC: 'basic',
+    SUPERUSER: 'superuser'
+  };
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+
+
   // Пиши код выше этой строки
 }
 
-  console.log(getProductPrice('Радар'));
-  console.log(getProductPrice('Захват'));
- console.log(getProductPrice('Сканер'));
- console.log(getProductPrice('Дроид'));
-  console.log(getProductPrice('Двигатель'));
+const mango = new Admin({
+  email: 'mango@mail.com',
+  accessLevel: Admin.AccessLevel.SUPERUSER
+});
+
+console.log(mango.email); // mango@mail.com
+console.log(mango.accessLevel); // superuser

@@ -1,30 +1,50 @@
-const products = [
-  { name: 'Радар', price: 1300, quantity: 4 },
-  { name: 'Сканер', price: 2700, quantity: 3 },
-  { name: 'Дроид', price: 400, quantity: 7 },
-  { name: 'Захват', price: 1200, quantity: 9 },
-];
+class User {
+  email;
 
-function getAllPropValues(propName) {
-  
-  let props = [];
-  for (const product of products) {
-    //  console.log(product);
-    const keys = Object.keys(product);
-    //  console.log(keys);
-    for (const key of keys) {
-      // console.log(product[key]);
-      if (key === propName) {
-        props.push(product[key]);
-     
-     
-      }
-    }
-    }
-  return props;
+  constructor(email) {
+    this.email = email;
+  }
+
+  get email() {
+    return this.email;
+  }
+
+  set email(newEmail) {
+    this.email = newEmail;
+  }
+}
+class Admin extends User {
+  // Пиши код ниже этой строки
+ 
+  static AccessLevel = {
+    BASIC: 'basic',
+    SUPERUSER: 'superuser'
+  };
+  blacklistedEmails =[];
+  accessLevel;
+
+  constructor({ email, accessLevel }) {
+    super(email);
+    this.accessLevel = accessLevel;
+  }
+  blacklist(email) {
+    return this.blacklistedEmails.push(email);
+  }
+  isBlacklisted(email) {
+     return this.blacklistedEmails.includes(email);
+  }
+
+  // Пиши код выше этой строки
 }
 
-console.log(getAllPropValues('name'));
-   console.log(getAllPropValues('quantity'));
-   console.log(getAllPropValues('price'));
-  console.log(getAllPropValues('category'));
+const mango = new Admin({
+  email: 'mango@mail.com',
+  accessLevel: Admin.AccessLevel.SUPERUSER
+});
+
+console.log(mango.email); // mango@mail.com
+console.log(mango.accessLevel); // superuser
+mango.blacklist('poly@mail.com');
+console.log(mango.blacklistedEmails); // 'poly@mail.com'
+console.log(mango.isBlacklisted('mango@mail.com')); //  false
+console.log(mango.isBlacklisted('poly@mail.com')); // true

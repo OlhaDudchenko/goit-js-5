@@ -1,24 +1,19 @@
-const keys = [];
-const values = [];
-const advert = {
-  service: 'apt',
-};
-const apartment = Object.create(advert);
-apartment.descr = 'Просторная квартира в центре';
-apartment.rating = 4;
-apartment.price = 2153;
+class Car {
 
-for (const key in apartment) {
-  // Пиши код ниже этой строки
+  #brand;
 
- 
-      if (apartment.hasOwnProperty(key)) {
-   
-    keys.push(key);
-    values.push(apartment[key]);
+  constructor({ brand, model, price }) {
+    this.#brand = brand;
+    this.model = model;
+    this.price = price;
   }
-
-  // Пиши код выше этой строки
+  getBrand() {
+    return this.#brand;
+  }
+  changeBrand(newBrand) {
+    this.#brand = newBrand;
 }
-console.log(keys);
-console.log(values);
+
+}
+console.log(new Car({ brand: 'Audi', model: 'Q3', price: 36000 }));
+console.log(this.#brand);

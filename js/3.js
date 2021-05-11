@@ -1,13 +1,10 @@
-function makePizza(pizzaName, callback) {
-  console.log(`Пицца ${pizzaName} готовится, ожидайте...`);
-  callback(pizzaName);
-}
+ function Car(brand, model, price) {
+  this.brand = brand;
+  this.model = model;
+  this.price = price;
+};
 
-makePizza('Роял гранд', function deliverPizza(pizzaName) {
-  console.log(`Доставляем пиццу ${pizzaName}.`);
-});
-// Пиши код ниже этой строки
-
-makePizza('Ультрасыр', function eatPizza(pizzaName) {
-  console.log(`Едим пиццу ${pizzaName}`)
-});
+const car = new Car('Audi', 'Q3', 36000);
+const car = new Car('BMW', 'X5', 58900);
+const car = new Car('Nissan', 'Murano', 31700);
+console.log(car);
